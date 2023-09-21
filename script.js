@@ -1,4 +1,10 @@
+function pullDown() {
+    
+}
 const pullDownButton = document.getElementById("lists")
+const pullDownParents = document.getElementById("pull-down")
+const pullDownChild = document.querySelectorAll(".pull-down-list")
+const currentList = document.getElementById("current-list")
 console.log(pullDownButton)
 
 pullDownButton.addEventListener('mouseover', function(){
@@ -17,7 +23,6 @@ pullDownButton.addEventListener('click', function(){
     console.log("クリックしたら緑")
 })
 
-const pullDownParents = document.getElementById("pull-down")
 pullDownButton.addEventListener('click', function(){
     if (pullDownParents.getAttribute("style") == "display:block;"){
         pullDownParents.removeAttribute("style", "display:block;")
@@ -27,3 +32,13 @@ pullDownButton.addEventListener('click', function(){
         console.log("表示")
     }
 })
+
+pullDownChild.forEach(function(list){
+    list.addEventListener('click', function(){
+        const value = list.innerHTML
+        currentList.innerHTML = value
+        console.log(value)
+    })
+})
+
+window.addEventListener('load', pullDown)
